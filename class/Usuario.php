@@ -118,6 +118,20 @@ public function setData($data){
 
 	}
 
+	public function delete(){
+
+		$sql = new Sql();
+
+		$sql->query("DELETE FROM tb_usuario WHERE idusuario = :ID", array(
+			':ID'=>$this->getIdusuario()
+		));
+
+		$this->setIdusuario(0);
+		$this->setDesloguin("");
+		$this->setDessenha("");
+		$this->setDtcadastro(new DateTime());
+	}
+
 	public function __construct($loguin = "", $password = ""){
 		$this->setDesloguin($loguin);
 		$this->setDessenha($password);
